@@ -1,0 +1,29 @@
+html, body, main {
+    height: 92vh
+}
+
+#playground-page {
+    display: flex;
+}
+
+#options {
+    height: 100%;
+    width: 20%;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.draggable-option {
+    background-image: url('../assets/option.svg');
+    background-repeat: no-repeat;
+    height: 2.5rem;
+    cursor: move;
+}
+
+#content {
+    width: 80%;
+    padding: 2rem;
+}
