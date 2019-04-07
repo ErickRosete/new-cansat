@@ -35,4 +35,14 @@ $(function () {
             $(ui.draggable).remove();
         }
     })
+
+    $('#trash').hover(function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-close.png', 'trash-open.png')
+        })
+    }, function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-open.png', 'trash-close.png')
+        })
+    })
 });
