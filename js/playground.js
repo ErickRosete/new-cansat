@@ -38,7 +38,12 @@ $(function () {
 
     $("#trash").droppable({
         accept: '.target-option',
-        hoverClass: 'onHover',
+        over: (event, ui) => {
+            $(event.target).find('img').attr('src', '../assets/trash-open.png')
+        },
+        out: (event, ui) => {
+            $(event.target).find('img').attr('src', '../assets/trash-close.png')
+        },
         drop: (event, ui) => {
             //Sensor deleted
             const parent = $(ui.draggable).parent();
@@ -54,17 +59,10 @@ $(function () {
             }
 
             $(ui.draggable).remove();
+            $(event.target).find('img').attr('src', '../assets/trash-close.png')
         }
     })
-    $('#trash').hover(function () {
-        $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-close.png', 'trash-open.png')
-        })
-    }, function () {
-        $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-open.png', 'trash-close.png')
-        })
-    })
+
     droppedSensorHandler = (event, ui) => {
         const sensorsCont = $(event.target);
         const childrenNumber = sensorsCont.children().length;
@@ -93,4 +91,12 @@ $(function () {
             });
         }
     }
+
+    // $('#trash').hover(function () {
+
+    // }, function () {
+    //     $(this).find('img').attr('src', function (i, src) {
+    //         return src.replace('trash-open.png', 'trash-close.png')
+    //     })
+    // })
 });
