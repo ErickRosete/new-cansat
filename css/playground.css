@@ -23,6 +23,40 @@ html, body, main {
     width: 10rem;
 }
 
+/* Sensors */
+
+#sensor-options {
+    display: flex;
+    flex-wrap: wrap;
+    width: 10rem;
+}
+
+.sensor {
+    cursor: move;
+    width: 2.7rem;
+    margin: 0 0.1rem;
+    z-index: 100;
+}
+
+.option-sensor {
+    position: relative;
+}
+
+.sensor-container {
+    cursor: initial;
+    display: flex;
+    flex-wrap: wrap;
+    width: 10rem;
+    min-height: 3rem;
+    position: absolute;
+    top: 2.75rem;
+    left: 1.4rem;
+}
+
+.sensor-container.onHover {
+    background-color: lightyellow;
+}
+
 /* main */
 
 #content {
