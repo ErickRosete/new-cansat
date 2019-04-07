@@ -6,6 +6,8 @@ html, body, main {
     display: flex;
 }
 
+/* Options */
+
 #options {
     height: 100%;
     width: 20%;
@@ -16,14 +18,49 @@ html, body, main {
     padding: 1rem;
 }
 
-.draggable-option {
-    background-image: url('../assets/option.svg');
-    background-repeat: no-repeat;
-    height: 2.5rem;
+.option {
     cursor: move;
+    width: 10rem;
 }
+
+/* main */
 
 #content {
     width: 80%;
-    padding: 2rem;
+    display: flex
+}
+
+#target {
+    border: 1px solid black;
+    width: 20rem;
+    margin-left: 2rem;
+    padding: 3rem;
+}
+
+/* #target.onHover {
+    background-color: lightgreen;
+} */
+
+#target .option {
+    margin-top: -1rem;
+}
+
+#interactables {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#trash img {
+    width: 10rem;
+}
+
+#trash.onHover {
+    border: 5px solid darksalmon;
+}
+
+#play {
+    text-align: center;
+    margin: 2rem;
 }

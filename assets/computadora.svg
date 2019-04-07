@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 809.5 330.71">
+    <defs>
+        <style>
+            .cls-1{fill:#48acd3;}.cls-2{font-size:130px;fill:#1d1d1b;font-family:BerlinSansFB-Reg, Berlin Sans FB;}
+        </style>
+    </defs>
+    <title>
+        computadora
+    </title>
+    <g id="Base">
+        <path d="M814,136.5H417.74L387,190.5l-271.15,1.65L83.27,136.5H28.5a12,12,0,0,0-12,12V389a12,12,0,0,0,12,12H76.64l38.77,66.21,271.15-1.64L423.32,401H814a12,12,0,0,0,12-12V148.5A12,12,0,0,0,814,136.5Z" class="cls-1" transform="translate(-16.5 -136.5)"/>
+    </g>
+    <g id="Text">
+        <text class="cls-2" transform="translate(16.5 202.5)">
+            Computadora
+        </text>
+    </g>
+</svg>

@@ -1,26 +1,58 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="../css/playground.css">
+
     <title>CanSat</title>
 </head>
 
 <body>
     <main id="playground-page">
         <div id="options">
-            <div id="option-1" draggable="true" class="draggable-option"></div>
-            <div id="option-2" draggable="true" class="draggable-option"></div>
-            <div id="option-3" draggable="true" class="draggable-option"></div>
-            <div id="option-4" draggable="true" class="draggable-option"></div>
-            <div id="option-5" draggable="true" class="draggable-option"></div>
-            <div id="option-6" draggable="true" class="draggable-option"></div>
-            <div id="option-7" draggable="true" class="draggable-option"></div>
+            <div id="option-power" class="option cont-option" class="ui-widget-content">
+                <img src="../assets/Potencia.svg">
+            </div>
+
+            <div id="option-telecom" class="option cont-option" class="ui-widget-content">
+                <img src="../assets/Telecomunicacion.svg">
+            </div>
+
+            <div id="option-computer" class="option cont-option" class="ui-widget-content">
+                <img src="../assets/computadora.svg">
+            </div>
+            <div id="option-sensor" class="option cont-option" class="ui-widget-content">
+                <img src="../assets/Sensores.svg">
+            </div>
         </div>
+
         <div id="content">
+            <div id="target">
+
+            </div>
+            <div id="interactables">
+                <div id="trash">
+                    <img src="../assets/trash-close.png" alt="trash">
+                </div>
+                <div id="play">
+                    <button>PLAY</button>
+                </div>
+            </div>
         </div>
     </main>
 </body>
 
+<script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
 <script src="../js/playground.js"></script>
+
+<script>if (window.module) module = window.module;</script>
+
 
 </html>
