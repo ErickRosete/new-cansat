@@ -2,11 +2,8 @@ $(function () {
     $(".cont-option").draggable({
         containment: 'document',
         revert: "invalid",
-        // snap: ".target-option",
-        // snapMode: "outer",
-        // snapTolerance: 30,
         helper: 'clone',
-        connectToSortable: "#target"
+        connectToSortable: "#target",
     });
 
     $("#target").droppable({
@@ -17,25 +14,48 @@ $(function () {
             droppedItem.removeClass("cont-option");
             droppedItem.addClass("target-option");
 
-            // const droppedItem = $(ui.draggable).clone();
-            // droppedItem.removeClass("cont-option");
-            // droppedItem.addClass("target-option");
-            // $(event.target).append(droppedItem)
+            //make sensor container droppable when dropped to target
+            if (droppedItem.hasClass('option-sensor')) {
+                droppedItem.find(".sensor-container").droppable({
+                    hoverClass: 'onHover',
+                    accept: '.sensor-option',
+                    drop: droppedSensorHandler,
+                })
+            }
         }
     })
 
+    $(".sensor-option").draggable({
+        containment: 'document',
+        revert: "invalid",
+        helper: 'clone',
+    });
+
     $("#target").sortable({
-        revert: true
+        revert: true,
+        cancel: ".sensor-container"
     });
 
     $("#trash").droppable({
         accept: '.target-option',
         hoverClass: 'onHover',
         drop: (event, ui) => {
+            //Sensor deleted
+            const parent = $(ui.draggable).parent();
+            if (parent.hasClass('sensor-container')) {
+                const childrenNumber = parent.children().length;
+                if (childrenNumber > 7) {
+                    parent.siblings("img").attr("src", "../assets/Sensoresx3.svg")
+                } else if (childrenNumber > 4) {
+                    parent.siblings("img").attr("src", "../assets/Sensoresx2.svg")
+                } else {
+                    parent.siblings("img").attr("src", "../assets/Sensoresx1.svg")
+                }
+            }
+
             $(ui.draggable).remove();
         }
     })
-
     $('#trash').hover(function () {
         $(this).find('img').attr('src', function (i, src) {
             return src.replace('trash-close.png', 'trash-open.png')
@@ -45,4 +65,32 @@ $(function () {
             return src.replace('trash-open.png', 'trash-close.png')
         })
     })
+    droppedSensorHandler = (event, ui) => {
+        const sensorsCont = $(event.target);
+        const childrenNumber = sensorsCont.children().length;
+
+        if (childrenNumber > 8) {
+            alert("No necesitas tantos sensores!")
+        }
+        else {
+            if (childrenNumber > 5) {
+                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx3.svg")
+            } else if (childrenNumber > 2) {
+                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx2.svg")
+            } else {
+                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx1.svg")
+            }
+
+            const droppedItem = $(ui.draggable).clone();
+            droppedItem.removeClass("sensor-option");
+            droppedItem.addClass("target-option");
+            sensorsCont.append(droppedItem)
+
+            //make it draggable
+            droppedItem.draggable({
+                containment: 'document',
+                revert: "invalid",
+            });
+        }
+    }
 });
