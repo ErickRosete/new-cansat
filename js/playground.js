@@ -64,8 +64,6 @@ $(function () {
         }
     })
 
-<<<<<<< HEAD
-=======
     $('#trash').hover(function () {
         $(this).find('img').attr('src', function (i, src) {
             return src.replace('trash-close.png', 'trash-open.png')
@@ -76,7 +74,6 @@ $(function () {
         })
     })
 
->>>>>>> 30b22f52dda20c64a5eef8c2ff65f298a173a7e0
     droppedSensorHandler = (event, ui) => {
         const sensorsCont = $(event.target);
         const childrenNumber = sensorsCont.children().length;
