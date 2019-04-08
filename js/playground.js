@@ -16,6 +16,7 @@ $(function () {
 
             //make sensor container droppable when dropped to target
             if (droppedItem.hasClass('option-sensor')) {
+                droppedItem.css('height', 'auto');
                 droppedItem.find(".sensor-container").droppable({
                     hoverClass: 'onHover',
                     accept: '.sensor-option',
@@ -63,6 +64,19 @@ $(function () {
         }
     })
 
+<<<<<<< HEAD
+=======
+    $('#trash').hover(function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-close.png', 'trash-open.png')
+        })
+    }, function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-open.png', 'trash-close.png')
+        })
+    })
+
+>>>>>>> 30b22f52dda20c64a5eef8c2ff65f298a173a7e0
     droppedSensorHandler = (event, ui) => {
         const sensorsCont = $(event.target);
         const childrenNumber = sensorsCont.children().length;
