@@ -40,10 +40,10 @@ $(function () {
     $("#trash").droppable({
         accept: '.target-option',
         over: (event, ui) => {
-            $(event.target).find('img').attr('src', '../assets/trash-open.png')
+            $(event.target).find('img').attr('src', '../assets/trash-open.svg')
         },
         out: (event, ui) => {
-            $(event.target).find('img').attr('src', '../assets/trash-close.png')
+            $(event.target).find('img').attr('src', '../assets/trash-close.svg')
         },
         drop: (event, ui) => {
             //Sensor deleted
@@ -60,17 +60,17 @@ $(function () {
             }
 
             $(ui.draggable).remove();
-            $(event.target).find('img').attr('src', '../assets/trash-close.png')
+            $(event.target).find('img').attr('src', '../assets/trash-close.svg')
         }
     })
 
     $('#trash').hover(function () {
         $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-close.png', 'trash-open.png')
+            return src.replace('trash-close.svg', 'trash-open.svg')
         })
     }, function () {
         $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-open.png', 'trash-close.png')
+            return src.replace('trash-open.svg', 'trash-close.svg')
         })
     })
 
@@ -107,7 +107,7 @@ $(function () {
 
     // }, function () {
     //     $(this).find('img').attr('src', function (i, src) {
-    //         return src.replace('trash-open.png', 'trash-close.png')
+    //         return src.replace('trash-open.svg', 'trash-close.svg')
     //     })
     // })
 });

@@ -6,7 +6,7 @@ const ipcMain = electron.ipcMain;
 let mainWindow;
 
 app.on("ready", () => {
-  mainWindow = new BrowserWindow({});
+  mainWindow = new BrowserWindow({ width: 960, height: 600, fullscreen: false });
   mainWindow.loadFile("./views/playground.html");
   mainWindow.on("closed", () => app.quit());
 

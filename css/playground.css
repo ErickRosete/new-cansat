@@ -1,5 +1,5 @@
 html, body, main {
-    height: 92vh
+    height: 97vh
 }
 body{
     background-image: url("../assets/Background.png");
@@ -12,6 +12,7 @@ body{
 /* Options */
 
 #options {
+    border-radius: 1rem;
     width: 20%;
     background-color: rgb(255, 255, 255,0.7);
     display: flex;
@@ -65,6 +66,7 @@ body{
 #content {
     width: 80%;
     display: flex;
+    justify-content:space-between;
 }
 
 #target {
@@ -96,7 +98,7 @@ body{
     padding:1rem;
     color: white;
     border-radius: 3rem;   
-    background-color: #96ce25; 
+    background-color: #95c11f; 
     border: none;
     font-family: 'Heebo', sans-serif;
     font-weight: bold;
@@ -125,10 +127,6 @@ body{
     padding-left: 1rem;
     color:white;
 }
-
-/* #trash.onHover {
-    border: 5px solid darksalmon;
-} */
 
 #play {
     text-align: center;
