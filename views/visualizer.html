@@ -18,10 +18,51 @@
     <div id="content">
         <div id="visualizacion">
             <div class="vis-flashcards">
-                <div class="flashcard" id="temperatura" style="background-color:#f9b807">
-                    <img class="flashcard-img"></img>
-
+                <div class="flashcard" style="background-color:#f9b807" id="card-temperatura">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Temperatura.svg"></img>
                 </div>
+
+                <div class="flashcard" style="background-color:#e94d5c" id="card-presion">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Presion.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#04caf2" id="card-humedad">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Humedad.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#95c11f" id="card-altitud">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Altura.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#114e87" id="card-tiempo">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Tiempo.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#3c3c3c" id="card-co2">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Co2.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#913b8e" id="card-rayosuv">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/RayosUV.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#ff8307" id="card-ubicacion">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Ubicacion.svg"></img>
+                </div>
+
+                <div class="flashcard" style="background-color:#ff077a" id="card-camara">
+                    <p>15<span>psi</span></p>
+                    <img class="flashcard-img" src="../assets/visualizer/icons/Camara.svg"></img>
+                </div>
+
             </div>
 
             <div class="container-fluid sensor_vis" id="vis-temperatura">
@@ -30,7 +71,7 @@
                     <div class="col-4">
                         <div class="card">
                             <img class="card-img-top" style="background-color:#f9b807"
-                                src="../assets/visualizer/icons/Temperatura.png" alt="Card image cap">
+                                src="../assets/visualizer/icons/Temperatura.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -73,7 +114,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#48acd3"
+                            <img class="card-img-top" style="background-color:#04caf2"
                                 src="../assets/visualizer/icons/Humedad.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
@@ -90,13 +131,35 @@
                 </div>
             </div>
 
-            <div class="container-fluid sensor_vis" id="vis-altura">
+            <div class="container-fluid sensor_vis" id="vis-altitud">
                 <h3> Altura </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
                             <img class="card-img-top" style="background-color:#95c11f"
                                 src="../assets/visualizer/icons/Altura.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+
+            <div class="container-fluid sensor_vis" id="vis-tiempo">
+                <h3> Tiempo </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#114e87"
+                                src="../assets/visualizer/icons/Tiempo.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -134,7 +197,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid sensor_vis" id="vis-uv-ray">
+            <div class="container-fluid sensor_vis" id="vis-rayosuv">
                 <h3> Rayos Ultravioleta </h3>
                 <div class="row">
                     <div class="col-4">
@@ -156,57 +219,35 @@
                 </div>
             </div>
 
-            <div class="container-fluid sensor_vis" id="vis-time">
-                <h3> Tiempo </h3>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="card">
-                            <img class="card-img-top" style="background-color:#3b4c4d"
-                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-8 sensor_vis-data">
-                        chart
-                    </div>
-                </div>
-                <div class="sensor_vis-desc">
-                    Descripcion
-                </div>
-            </div>
-
-            <div class="container-fluid sensor_vis" id="vis-camera">
-                <h3> Camara </h3>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="card">
-                            <img class="card-img-top" style="background-color:#967094"
-                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-8 sensor_vis-data">
-                        chart
-                    </div>
-                </div>
-                <div class="sensor_vis-desc">
-                    Descripcion
-                </div>
-            </div>
-
-            <div class="container-fluid sensor_vis" id="vis-location">
+            <div class="container-fluid sensor_vis" id="vis-ubicacion">
                 <h3> Ubicacion </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#2685b1"
-                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#ff8307"
+                                src="../assets/visualizer/icons/Ubicacion.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+
+            <div class="container-fluid sensor_vis" id="vis-camara">
+                <h3> Camara </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#ff077a"
+                                src="../assets/visualizer/icons/Camara.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -226,33 +267,33 @@
         <div id="sensors-container">
             <h3>Sensores activos</h3>
             <div class="sensor-options">
-                <div id="sensor-temperatura" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-presion" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-humedad" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-altitud" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-camara" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-rayosuv" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-co2" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-ubicacion" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
-                <div id="sensor-tiempo" class="sensor">
-                    <img src="../assets/visualizer/sensors/placeholder.svg">
-                </div>
+                <a id="sensor-temperatura" class="sensor" href="#vis-temperatura">
+                    <img src="../assets/visualizer/sensors/temperature.svg">
+                </a>
+                <a id="sensor-presion" class="sensor" href="#vis-presion">
+                    <img src="../assets/visualizer/sensors/pressure.svg">
+                </a>
+                <a id="sensor-humedad" class="sensor" href="#vis-humedad">
+                    <img src="../assets/visualizer/sensors/humidity.svg">
+                </a>
+                <a id="sensor-altitud" class="sensor" href="#vis-altitud">
+                    <img src="../assets/visualizer/sensors/height.svg">
+                </a>
+                <a id="sensor-tiempo" class="sensor" href="#vis-tiempo">
+                    <img src="../assets/visualizer/sensors/time.svg">
+                </a>
+                <a id="sensor-co2" class="sensor" href="#vis-co2">
+                    <img src="../assets/visualizer/sensors/co2.svg">
+                </a>
+                <a id="sensor-rayosuv" class="sensor" href="#vis-rayosuv">
+                    <img src="../assets/visualizer/sensors/uv-ray.svg">
+                </a>
+                <a id="sensor-ubicacion" class="sensor" href="#vis-ubicacion">
+                    <img src="../assets/visualizer/sensors/location.svg">
+                </a>
+                <a id="sensor-camara" class="sensor" href="#vis-camara">
+                    <img src="../assets/visualizer/sensors/camera.svg">
+                </a>
             </div>
         </div>
     </div>
