@@ -5,30 +5,39 @@ azul: #48acd3
 amarillo: #f9b807
 verde: #95c11f
 */
-#content{
-    display:flex;
-    height: 100vh;
+body{
+    overflow:hidden;
+}
+#content {
+    display: flex;
+    margin-top:calc(15vh + 10px);
+    height: 83vh;
     overflow: hidden;
     background-image: url("../assets/Background.png");
-    background-size:contain; 
+    background-size: contain;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.title-img{
+.title-img {
+    margin-top:10px;
+    height: 20vh;
     width: 100%;
+    position:fixed;
+    top: 0;
 }
 
 /**Graficas **/
-#visualizacion{
+
+#visualizacion {
     width: 80%;
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
 }
 
-#visualizacion h1{
+#visualizacion h1 {
     text-align: center;
     padding: 1.5rem;
     background-color: #48acd3;
@@ -36,68 +45,70 @@ verde: #95c11f
     font-weight: bolder;
 }
 
-.sensor_vis{
+.sensor_vis {
     padding: 1rem;
 }
 
-.sensor_vis .card-img-top{
+.sensor_vis .card-img-top {
     height: 35vh;
-    padding:2rem;
+    padding: 2rem;
 }
 
-.sensor_vis h3{
+.sensor_vis h3 {
     font-size: 2rem;
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
-.sensor_vis .card-title{
+.sensor_vis .card-title {
     text-align: center;
     font-size: 2.5rem;
 }
 
-.sensor_vis .card-text{
+.sensor_vis .card-text {
     font-size: 1.rem;
 }
 
-.sensor_vis .card-body{
+.sensor_vis .card-body {
     padding: 0.5rem 1rem;
 }
 
-.sensor_vis .sensor_vis-data{
+.sensor_vis .sensor_vis-data {
+
 }
 
-.sensor_vis-desc{
+.sensor_vis-desc {
     text-align: center;
     font-size: 1.5rem;
-    margin-top:1rem;
-    background-color: rgb(255, 255, 255,0.7);
-
+    margin-top: 1rem;
+    background-color: rgb(255, 255, 255, 0.7);
 }
 
-
 /**sensores seleccionados **/
-#sensors-container{
-    background-color: rgb(255, 255, 255,0.7);
+
+#sensors-container {
+    background-color: rgb(255, 255, 255, 0.7);
     width: 20%;
-    display:flex;
+    display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
 }
 
-#sensors-container h3{
-    margin:1rem;
+#sensors-container h3 {
+    margin: 1rem;
+    color:#3c3c3c;
 }
 
-.sensor-options{
-    margin:0.75rem;
-    display:flex;
+.sensor-options {
+    margin: 0.75rem;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
 }
 
-.sensor-options .sensor{
+.sensor-options .sensor {
     width: 3rem;
-    margin: 0.2rem;   
+    margin: 0.2rem;
 }
