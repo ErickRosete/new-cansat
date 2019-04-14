@@ -17,6 +17,10 @@ verde: #95c11f
     display: none;
 }
 
+.title-img{
+    width: 100%;
+}
+
 /**Graficas **/
 #visualizacion{
     width: 80%;
