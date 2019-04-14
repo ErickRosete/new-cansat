@@ -26,7 +26,10 @@ verde: #95c11f
 
 #visualizacion h1{
     text-align: center;
-    margin: 2rem;
+    padding: 1.5rem;
+    background-color: #48acd3;
+    color: white;
+    font-weight: bolder;
 }
 
 .sensor_vis{
