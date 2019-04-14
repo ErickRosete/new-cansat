@@ -22,7 +22,7 @@ body{
 }
 
 .title-img {
-    margin-top:10px;
+    margin-top:5px;
     height: 20vh;
     width: 100%;
     position:fixed;
@@ -43,6 +43,25 @@ body{
     background-color: #48acd3;
     color: white;
     font-weight: bolder;
+}
+
+.vis-flashcards{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin:2rem;
+}
+
+.flashcard-img{
+    margin: 1rem; 
+    border-right: 
+}
+
+.flashcard{
+    color:white;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .sensor_vis {
