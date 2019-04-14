@@ -2,40 +2,49 @@ window.onload = function () {
     var sensors = JSON.parse(sessionStorage.getItem('sensors'));
     if (sensors) {
         if (!sensors.camera) {
-            const uvRay = document.getElementById("vis-camera");
-            uvRay.style.display = "none"
+            document.getElementById("vis-camara").style.display="none";
+            document.getElementById("card-camara").style.display="none";
+            document.getElementById("sensor-camara").style.display="none";
         }
         if (!sensors.co2) {
-            const co2 = document.getElementById("vis-co2");
-            co2.style.display = "none"
+            document.getElementById("vis-co2").style.display="none";
+            document.getElementById("card-co2").style.display="none";
+            document.getElementById("sensor-co2").style.display="none";
         }
         if (!sensors.height) {
-            const height = document.getElementById("vis-altura");
-            height.style.display = "none"
+            document.getElementById("vis-altitud").style.display="none";
+            document.getElementById("card-altitud").style.display="none";
+            document.getElementById("sensor-altitud").style.display="none";
         }
         if (!sensors.humidity) {
-            const humidity = document.getElementById("vis-humedad");
-            humidity.style.display = "none"
+            document.getElementById("vis-humedad").style.display="none";
+            document.getElementById("card-humedad").style.display="none";
+            document.getElementById("sensor-humedad").style.display="none";
         }
         if (!sensors.location) {
-            const location = document.getElementById("vis-location");
-            location.style.display = "none"
+            document.getElementById("vis-ubicacion").style.display="none";
+            document.getElementById("card-ubicacion").style.display="none";
+            document.getElementById("sensor-ubicacion").style.display="none";
         }
         if (!sensors.pressure) {
-            const pressure = document.getElementById("vis-presion");
-            pressure.style.display = "none"
+            document.getElementById("vis-presion").style.display="none";
+            document.getElementById("card-presion").style.display="none";
+            document.getElementById("sensor-presion").style.display="none";
         }
         if (!sensors.temperature) {
-            const temperature = document.getElementById("vis-temperatura");
-            temperature.style.display = "none"
+            document.getElementById("vis-temperatura").style.display="none";
+            document.getElementById("card-temperatura").style.display="none";
+            document.getElementById("sensor-temperatura").style.display="none";
         }
         if (!sensors.time) {
-            const time = document.getElementById("vis-time");
-            time.style.display = "none"
+            document.getElementById("vis-tiempo").style.display="none";
+            document.getElementById("card-tiempo").style.display="none";
+            document.getElementById("sensor-tiempo").style.display="none";
         }
         if (!sensors.uvRay) {
-            const uvRay = document.getElementById("vis-uv-ray");
-            uvRay.style.display = "none"
+            document.getElementById("vis-rayosuv").style.display="none";
+            document.getElementById("card-rayosuv").style.display="none";
+            document.getElementById("sensor-rayosuv").style.display="none";
         }
 
     }
