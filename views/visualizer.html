@@ -10,18 +10,17 @@
     <link rel="stylesheet" href="../css/visualizer.css">
     <link href="../fonts/Heebo/Heebo-Bold.ttf" rel="stylesheet">
     <link rel="stylesheet" href="../css/bootstrap-css/bootstrap.min.css">
-    <script src="../js/bootstrap-js/bootstrap.min.js"></script>
 </head>
 
 <body style="background-color:#48acd3">
-    <img src="../assets/CienciaConDatos.svg" class="title-img"></img>
+    <img src="../assets/visualizer/CienciaConDatos.svg" class="title-img"></img>
 
     <div id="content">
         <div id="visualizacion">
             <div class="vis-flashcards">
                 <div class="flashcard" id="temperatura" style="background-color:#f9b807">
-                        <img class="flashcard-img"></img>
-                        
+                    <img class="flashcard-img"></img>
+
                 </div>
             </div>
 
@@ -31,7 +30,7 @@
                     <div class="col-4">
                         <div class="card">
                             <img class="card-img-top" style="background-color:#f9b807"
-                                src="../assets/icons/Temperatura.png" alt="Card image cap">
+                                src="../assets/visualizer/icons/Temperatura.png" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -52,8 +51,8 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#e94d5c" src="../assets/icons/Presion.svg"
-                                alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#e94d5c"
+                                src="../assets/visualizer/icons/Presion.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -74,8 +73,8 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#48acd3" src="../assets/icons/Humedad.svg"
-                                alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#48acd3"
+                                src="../assets/visualizer/icons/Humedad.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -96,8 +95,8 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#95c11f" src="../assets/icons/Altura.svg"
-                                alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#95c11f"
+                                src="../assets/visualizer/icons/Altura.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -113,13 +112,13 @@
                 </div>
             </div>
 
-            <div class="container-fluid sensor_vis" id="vis-altura">
+            <div class="container-fluid sensor_vis" id="vis-co2">
                 <h3> Co2 </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#3c3c3c" src="../assets/icons/Co2.svg"
-                                alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#3c3c3c"
+                                src="../assets/visualizer/icons/Co2.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -135,13 +134,79 @@
                 </div>
             </div>
 
-            <div class="container-fluid sensor_vis" id="vis-altura">
+            <div class="container-fluid sensor_vis" id="vis-uv-ray">
                 <h3> Rayos Ultravioleta </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img class="card-img-top" style="background-color:#913b8e" src="../assets/icons/RayosUV.svg"
-                                alt="Card image cap">
+                            <img class="card-img-top" style="background-color:#913b8e"
+                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+
+            <div class="container-fluid sensor_vis" id="vis-time">
+                <h3> Tiempo </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#3b4c4d"
+                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+
+            <div class="container-fluid sensor_vis" id="vis-camera">
+                <h3> Camara </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#967094"
+                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+
+            <div class="container-fluid sensor_vis" id="vis-location">
+                <h3> Ubicacion </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#2685b1"
+                                src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
                                 <h5 class="card-title">15* C </h5>
@@ -162,35 +227,39 @@
             <h3>Sensores activos</h3>
             <div class="sensor-options">
                 <div id="sensor-temperatura" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-presion" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-humedad" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-altitud" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-camara" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-rayosuv" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-co2" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-ubicacion" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
                 <div id="sensor-tiempo" class="sensor">
-                    <img src="../assets/cuadrito.svg">
+                    <img src="../assets/visualizer/sensors/placeholder.svg">
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+<script src="../js/bootstrap-js/bootstrap.min.js"></script>
+<script src="../js/visualizer.js"></script>
+
 
 </html>

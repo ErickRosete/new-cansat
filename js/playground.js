@@ -1,6 +1,4 @@
 $(function () {
-    const Swal = require('sweetalert2')
-
     $(".cont-option").draggable({
         containment: 'document',
         revert: "invalid",
@@ -39,6 +37,16 @@ $(function () {
         cancel: ".sensor-container"
     });
 
+    adjustSensorImage = (img, sensorNumber) => {
+        if (sensorNumber > 6) {
+            img.attr("src", "../assets/playground/options/Sensoresx3.svg")
+        } else if (sensorNumber > 3) {
+            img.attr("src", "../assets/playground/options/Sensoresx2.svg")
+        } else {
+            img.attr("src", "../assets/playground/options/Sensoresx1.svg")
+        }
+    }
+
     $("#trash").droppable({
         accept: '.target-option',
         over: (event, ui) => {
@@ -51,14 +59,9 @@ $(function () {
             //Sensor deleted
             const parent = $(ui.draggable).parent();
             if (parent.hasClass('sensor-container')) {
-                const childrenNumber = parent.children().length;
-                if (childrenNumber > 7) {
-                    parent.siblings("img").attr("src", "../assets/Sensoresx3.svg")
-                } else if (childrenNumber > 4) {
-                    parent.siblings("img").attr("src", "../assets/Sensoresx2.svg")
-                } else {
-                    parent.siblings("img").attr("src", "../assets/Sensoresx1.svg")
-                }
+                const newSensorNumber = parent.children().length - 1;
+                const img = parent.siblings("img").first();
+                adjustSensorImage(img, newSensorNumber);
             }
 
             $(ui.draggable).remove();
@@ -66,31 +69,16 @@ $(function () {
         }
     })
 
-    $('#trash').hover(function () {
-        $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-close.svg', 'trash-open.svg')
-        })
-    }, function () {
-        $(this).find('img').attr('src', function (i, src) {
-            return src.replace('trash-open.svg', 'trash-close.svg')
-        })
-    })
-
     droppedSensorHandler = (event, ui) => {
         const sensorsCont = $(event.target);
-        const childrenNumber = sensorsCont.children().length;
+        const newSensorNumber = sensorsCont.children().length + 1;
 
-        if (childrenNumber > 8) {
-            alert("No necesitas tantos sensores!")
+        if (newSensorNumber > 9) {
+            showError("No necesitas tantos sensores")
         }
         else {
-            if (childrenNumber > 5) {
-                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx3.svg")
-            } else if (childrenNumber > 2) {
-                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx2.svg")
-            } else {
-                sensorsCont.siblings("img").attr("src", "../assets/Sensoresx1.svg")
-            }
+            const img = sensorsCont.siblings("img").first();
+            adjustSensorImage(img, newSensorNumber);
 
             const droppedItem = $(ui.draggable).clone();
             droppedItem.removeClass("sensor-option");
@@ -104,6 +92,17 @@ $(function () {
             });
         }
     }
+
+    $('#trash').hover(function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-close.svg', 'trash-open.svg')
+        })
+    }, function () {
+        $(this).find('img').attr('src', function (i, src) {
+            return src.replace('trash-open.svg', 'trash-close.svg')
+        })
+    })
+
 
     checkSequence = () => {
         const sequence = $('#target').children();
@@ -125,7 +124,17 @@ $(function () {
         ipcRenderer.send("router", route);
     }
 
+    showError = (message) => {
+        const Swal = require('sweetalert2')
+        Swal.fire({
+            type: 'error',
+            title: 'Uups...',
+            text: message,
+        })
+    }
+
     showSuccess = () => {
+        const Swal = require('sweetalert2')
         Swal.fire({
             title: 'Excelente trabajo',
             type: 'success',
@@ -149,16 +158,16 @@ $(function () {
             camera: sensors.hasClass('camera'),
             location: sensors.hasClass('location')
         }
-        console.log(sensorList);
+        sessionStorage.setItem('sensors', JSON.stringify(sensorList));
     }
 
     $("#play").click(function () {
         const correct = checkSequence();
         if (correct) {
             saveSensorList();
-            // showSuccess()
+            showSuccess();
         } else {
-            alert("Ups, parece que no es el orden correcto")
+            showError("Parece que el orden no es correcto");
         }
     });
 });
