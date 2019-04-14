@@ -58,7 +58,7 @@ body{
 }
 
 .sensor-container.onHover {
-    background-color: lightyellow;
+    background-color:rgb(255, 255, 255,0.7);
 }
 
 /* main */

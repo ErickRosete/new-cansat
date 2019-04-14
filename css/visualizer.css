@@ -1,0 +1,96 @@
+/*
+morado:#913b8e
+Rojo: #e94d5c
+azul: #48acd3
+amarillo: #f9b807
+verde: #95c11f
+*/
+#content{
+    display:flex;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("../assets/Background.png");
+    background-size:contain; 
+}
+
+.hide{
+    display: none;
+}
+
+/**Graficas **/
+#visualizacion{
+    width: 80%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#visualizacion h1{
+    text-align: center;
+    margin: 2rem;
+}
+
+.sensor_vis{
+    padding: 1rem;
+}
+
+.sensor_vis .card-img-top{
+    height: 35vh;
+    padding:2rem;
+}
+
+.sensor_vis h3{
+    font-size: 2rem;
+    margin-bottom:1rem;
+}
+
+.sensor_vis .card-title{
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.sensor_vis .card-text{
+    font-size: 1.rem;
+}
+
+.sensor_vis .card-body{
+    padding: 0.5rem 1rem;
+}
+
+.sensor_vis .sensor_vis-data{
+}
+
+.sensor_vis-desc{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top:1rem;
+    background-color: rgb(255, 255, 255,0.7);
+
+}
+
+
+/**sensores seleccionados **/
+#sensors-container{
+    background-color: rgb(255, 255, 255,0.7);
+    width: 20%;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#sensors-container h3{
+    margin:1rem;
+}
+
+.sensor-options{
+    margin:0.75rem;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sensor-options .sensor{
+    width: 3rem;
+    margin: 0.2rem;   
+}

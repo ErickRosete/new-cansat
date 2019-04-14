@@ -9,10 +9,69 @@
 
     <link rel="stylesheet" href="../css/visualizer.css">
     <link href="../fonts/Heebo/Heebo-Bold.ttf" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap-css/bootstrap.min.css">
+    <script src="../js/bootstrap-js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <h1>Visualizador de gráficas</h1>
+    <main id="content">
+        <div id="visualizacion">
+            <h1> Analizador de datos </h1>
+            <div class="container-fluid sensor_vis">
+                <h3> Temperatura </h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" style="background-color:#e94d5c" src="../assets/icons/Temperatura.png"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Actual</p>
+                                <h5 class="card-title">15* C </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 sensor_vis-data">
+                        chart
+                    </div>
+                </div>
+                <div class="sensor_vis-desc">
+                    Descripcion
+                </div>
+            </div>
+        </div>
+
+        <div id="sensors-container">
+            <h3>Sensores Activos</h3>
+            <div class="sensor-options">
+                <div id="temperatura" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="presion" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="humedad" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="altitud" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="camara" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="rayosuv" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="co2" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="ubicacion" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+                <div id="tiempo" class="sensor">
+                    <img src="../assets/cuadrito.svg">
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
