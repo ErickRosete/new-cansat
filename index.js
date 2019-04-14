@@ -22,10 +22,18 @@ function showMonitorWindow() {
   mainWindow.loadFile("./views/visualizer.html");
 }
 
-ipcMain.on("todo:add", (event, todo) => {
-  console.log(todo);
-  mainWindow.webContents.send("todo:add", todo);
-  addWindow.close();
+ipcMain.on("router", (event, route) => {
+  console.log(route);
+  switch (route) {
+    case "visualizer":
+      showMonitorWindow();
+      break;
+    case "playground":
+      showProgramWindow();
+      break;
+    default:
+      break;
+  }
 });
 
 const menuTemplate = [

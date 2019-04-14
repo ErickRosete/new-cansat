@@ -1,4 +1,6 @@
 $(function () {
+    const Swal = require('sweetalert2')
+
     $(".cont-option").draggable({
         containment: 'document',
         revert: "invalid",
@@ -103,11 +105,60 @@ $(function () {
         }
     }
 
-    // $('#trash').hover(function () {
+    checkSequence = () => {
+        const sequence = $('#target').children();
+        if (sequence.length == 4) {
+            if (sequence.hasClass('option-sensor') && sequence.hasClass('option-telecom')
+                && sequence.hasClass('option-power') && sequence.hasClass('option-computer')) {
+                const sensors = $(sequence).filter('.option-sensor').find('.sensor')
+                if (sensors.length > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-    // }, function () {
-    //     $(this).find('img').attr('src', function (i, src) {
-    //         return src.replace('trash-open.svg', 'trash-close.svg')
-    //     })
-    // })
+    changeToPage = (route) => {
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+        ipcRenderer.send("router", route);
+    }
+
+    showSuccess = () => {
+        Swal.fire({
+            title: 'Excelente trabajo',
+            type: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+            onClose: changeToPage.bind(this, "visualizer")
+        },
+        )
+    }
+
+    saveSensorList = () => {
+        const sensors = $('#target').children('.option-sensor').find('.sensor');
+        const sensorList = {
+            temperature: sensors.hasClass('temperature'),
+            pressure: sensors.hasClass('pressure'),
+            humidity: sensors.hasClass('humidity'),
+            height: sensors.hasClass('height'),
+            time: sensors.hasClass('time'),
+            co2: sensors.hasClass('co2'),
+            uvRay: sensors.hasClass('uv-ray'),
+            camera: sensors.hasClass('camera'),
+            location: sensors.hasClass('location')
+        }
+        console.log(sensorList);
+    }
+
+    $("#play").click(function () {
+        const correct = checkSequence();
+        if (correct) {
+            saveSensorList();
+            // showSuccess()
+        } else {
+            alert("Ups, parece que no es el orden correcto")
+        }
+    });
 });
