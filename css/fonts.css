@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'BerlinSansFB-Reg';
+    src: url('../fonts/Berlin_Sans/Berlin_Sans.ttf') format('truetype'),
+        url('../fonts/Berlin_Sans/Berlin_Sans.svg') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
