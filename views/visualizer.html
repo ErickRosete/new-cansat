@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="../css/visualizer.css">
     <link rel="stylesheet" href="../css/bootstrap-css/bootstrap.min.css">
+    <script src="../js/bootstrap-js/bootstrap.min.js"></script>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body style="background-color:#48acd3">
@@ -232,7 +235,7 @@
                         </div>
                     </div>
                     <div class="col-8 sensor_vis-data">
-                        chart
+                        <div id="chart" style="width:100%;height:100%"></div>
                     </div>
                 </div>
                 <div class="sensor_vis-desc">
@@ -296,6 +299,8 @@
             </div>
         </div>
     </div>
+    <script src='graph.js'></script>
+
 </body>
 
 <!--<script src="../js/bootstrap-js/bootstrap.min.js"></script> -->
