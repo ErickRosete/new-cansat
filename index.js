@@ -41,7 +41,7 @@ setInterval(function(){
   var randy0=String(Math.random()).slice(0,5);
   var randy1=String(Math.random()).slice(0,5);
   var randy2=String(Math.random()).slice(0,5);
-  console.log(randy0);
+//  console.log(randy0);
   mainWindow.webContents.send("Datos", "A"+randy0+",B"+randy1+",C"+randy2);
 },1000);
 
