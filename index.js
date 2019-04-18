@@ -40,9 +40,6 @@ ipcMain.on("router", (event, route) => {
   }
 });
 
-//BAROMETRO-GIROSCOPIO-ACELEROMETRO-MAGNETROMETRO-MQ135,DHT11,SENSORUV
-//TEMP,PRESS,ALTITUDE,GIRSOCOPIOX,Y,Z,ACELERACIONX-G123,Y,Z,PITCH,ROLL,YAW,MAGNETOMETER,MQ135,TEMPERATURE,HUMIDITY,UVSENSOR
-// "A123,B234,C123,D123,E123,F123,G123,H123,I123,J123,K123,L123,M123,N123,O123,P123,Q123"
 setInterval(function() {
   console.log("intervalo");
   const alphabet = "ABCDEFGHIJKLMNOPQ".split("");
@@ -55,9 +52,8 @@ setInterval(function() {
     cadena += alphabet[i];
     cadena += String(Math.random() * 100).slice(0, 3);
   }
-  console.log(cadena);
+  // console.log(cadena);
   mainWindow.webContents.send("Datos", cadena);
-  // mainWindow.webContents.send("Datos", "A"+r[0]+",B"+r[1]+",C"+r[2]);
 }, 1000);
 
 const menuTemplate = [

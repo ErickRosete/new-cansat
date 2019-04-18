@@ -1,51 +1,50 @@
 const electron = require("electron");
 const { ipcRenderer } = electron;
-var temp = [];
-var pressure = [];
-var height = [];
-var gyrox = [];
-var gyroy = [];
-var gyroz = [];
-var accx = [];
-var accy = [];
-var accz = [];
-var pitch = [];
-var roll = [];
-var yaw = [];
-var magnet = [];
-var mq135 = [];
-var temp2 = [];
-var humidity = [];
-var uvsensor = [];
 
-ipcRenderer.on("Datos", (event, datos) => {
-  //    console.log(event);
-  const dataArray = datos.split(",");
-  temp.push(+dataArray[0].slice(1));
-  pressure.push(+dataArray[1].slice(1));
-  height.push(+dataArray[2].slice(1));
-  humidity.push(+dataArray[15].slice(1));
-  uvsensor.push(+dataArray[16].slice(1));
-  // console.log("actualizando arrays")
-  // console.log(arr)
-  /*     gyrox.push(Number(datos.split(',')[3].slice(1,)));
-         gyroy.push(Number(datos.split(',')[4].slice(1,)));
-         gyroz.push(Number(datos.split(',')[5].slice(1,)));
-         accx.push(Number(datos.split(',')[6].slice(1,)));
-         accy.push(Number(datos.split(',')[7].slice(1,)));
-         accz.push(Number(datos.split(',')[8].slice(1,)));
-         pitch.push(Number(datos.split(',')[9].slice(1,)));
-         roll.push(Number(datos.split(',')[10].slice(1,)));
-         yaw.push(Number(datos.split(',')[11].slice(1,)));
-         magnet.push(Number(datos.split(',')[12].slice(1,)));
-         mq135.push(Number(datos.split(',')[13].slice(1,)));
-         temp2.push(Number(datos.split(',')[14].slice(1,)));
-        humidity.push(Number(datos.split(',')[15].slice(1,)));
- */
-  // console.log(temp);
-  // console.log(pressure);
-  // console.log(height);
-});
+let loadedCharts=false;
+//inicializaciones de diccionario je je para graficas
+const sensorData = {
+  A: {
+    titulo: "Temperatura",
+    datos: [],
+    cnt: 0
+  },
+  B: {
+    titulo: "Presion",
+    datos: [],
+    cnt: 0
+  },
+  C: {
+    titulo: "Humedad",
+    datos: [],
+    cnt: 0
+  },
+  D: {
+    titulo: "Altura",
+    datos: [],
+    cnt: 0
+  },
+  E: {
+    titulo: "CO2",
+    datos: [],
+    cnt: 0
+  },
+  F: {
+    titulo: "Tiempo",
+    datos: [],
+    cnt: 0
+  },
+  G: {
+    titulo: "UV",
+    datos: [],
+    cnt: 0
+  },
+  H: {
+    titulo: "Ubication",
+    datos: [],
+    cnt: 0
+  }
+};
 
 //funcion para la obtencion del ultimo dato de arrays
 function getData(plottedVar) {
@@ -59,52 +58,53 @@ function getData(plottedVar) {
   }
 }
 
-//inicializaciones de variables para graficas
-const arr = [];
-const arrgraph = [...Array(8).keys()];
-var cnt = [];
-for (i of arrgraph) {
-  cnt.push(0);
-}
-arr.push(temp);
-arr.push(pressure);
-arr.push(humidity);
-arr.push(height);
-arr.push(height) /*tiempo*/;
-arr.push(height) /*co2*/;
-arr.push(uvsensor) /*uv*/;
-arr.push(uvsensor); //ubicacion
-
-//inicializando con el primer dato las graficas(debe ser 0 en el tiempo 0)
-for (let i of arrgraph) {
-  // console.log(i+1)
-  // console.log(arr[i])
-  Plotly.plot(
-    "chart" + Number(i + 1),
-    [{ y: [getData(arr[i])], type: "line" }],
-    { responsive: true }
-  );
-}
-
-//actualizacion dinamica en base a array
-setInterval(function() {
-  // console.log("==argraph")
-  // console.log(arrgraph)
-  for (let i of arrgraph) {
-    // console.log(`grafica ${i}`)
-    // console.log(arr[i])
-    // console.log([[getData(arr[i])]])
-    // console.log(`datos ${cnt[i]}`)
-    Plotly.extendTraces("chart" + Number(i + 1), { y: [[getData(arr[i])]] }, [
-      0
-    ]);
-    cnt[i]++;
-    if (cnt[i] > 15) {
-      Plotly.relayout("chart" + Number(i + 1), {
+function updateChart(letter){
+  if(loadedCharts){
+   const len=sensorData[letter].datos.length
+   const lastElement=sensorData[letter].datos[len-1]
+   Plotly.extendTraces(sensorData[letter].titulo, { y: [[lastElement]] }, [0]);
+    if (len> 15) {
+      Plotly.relayout(sensorData[letter].titulo, {
         xaxis: {
-          range: [cnt[i] - 15, cnt[i]]
+          range: [len - 15, len]
         }
       });
     }
   }
-}, 500);
+}
+
+//recepcion de datos del back end. simbolo + para convertir a numeros
+ipcRenderer.on("Datos", (event, datos) => {
+  //codigo patrocinado por erick
+  const dataArray = datos.split(",");
+  for (let data of dataArray) {
+    const letter = data.slice(0, 1);
+    const value = data.slice(1);
+    if(sensorData[letter] && Number(value)>0){
+      console.log(sensorData[letter])
+      sensorData[letter].datos.push(value)
+      updateChart(letter);
+    }
+  }
+});
+
+//aqui se genera el objeto de plotly y se le pone el 0 en el 0
+function chartInit(){
+  for(let sensor in sensorData){
+    console.log(sensor)
+    var layout = {
+      title: sensorData[sensor].titulo,
+      font: { size: 18 }
+    };
+  
+    Plotly.plot(
+      sensorData[sensor].titulo,
+      [{ y: [getData(sensorData[sensor].datos)], type: "line" }],
+      layout,
+      { responsive: true }
+    );
+  }
+  loadedCharts=true;
+}
+
+//=========================main code en visualizer.js=================//

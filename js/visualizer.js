@@ -1,4 +1,5 @@
 window.onload = function () {
+    chartInit();
     //hide sensors
     var sensors = JSON.parse(sessionStorage.getItem('sensors'));
     if (sensors) {
