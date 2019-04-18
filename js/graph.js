@@ -9,7 +9,7 @@ const sensorData = {
     datos: []
   },
   B: {
-    titulo: "Presion",
+    titulo: "Presión",
     datos: []
   },
   C: {
@@ -33,7 +33,7 @@ const sensorData = {
     datos: []
   },
   H: {
-    titulo: "Ubication",
+    titulo: "Ubicación",
     datos: []
   }
 };
