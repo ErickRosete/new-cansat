@@ -17,6 +17,8 @@ body {
     overflow: hidden;
     background-image: url("../assets/Background.png");
     background-size: contain;
+    transition: opacity 1000ms;
+
 }
 
 .hide {
