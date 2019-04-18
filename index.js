@@ -9,7 +9,6 @@ app.on("ready", () => {
   mainWindow = new BrowserWindow({ width: 960, height: 600, fullscreen: false });
   mainWindow.loadFile("./views/playground.html");
   mainWindow.on("closed", () => app.quit());
-  mainWindow.webContents.openDevTools();
 
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(mainMenu);
@@ -45,6 +44,7 @@ setInterval(function(){
   mainWindow.webContents.send("Datos", "A"+randy0+",B"+randy1+",C"+randy2);
 },1000);
 
+
 const menuTemplate = [
   {
     label: "CanSat",
@@ -72,11 +72,6 @@ const menuTemplate = [
   }
 ];
 
-//ios
-if (process.platform === "darwin") {
-  menuTemplate.unshift({});
-}
-
 //dev tools
 if (process.env.NODE_ENV !== "production") {
   menuTemplate.push({
@@ -96,3 +91,9 @@ if (process.env.NODE_ENV !== "production") {
     ]
   });
 }
+
+//ios
+if (process.platform === "darwin") {
+ // menuTemplate.unshift({});
+}
+
