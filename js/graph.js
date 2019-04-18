@@ -6,57 +6,37 @@ let loadedCharts=false;
 const sensorData = {
   A: {
     titulo: "Temperatura",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   B: {
     titulo: "Presion",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   C: {
     titulo: "Humedad",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   D: {
     titulo: "Altura",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   E: {
     titulo: "CO2",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   F: {
     titulo: "Tiempo",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   G: {
     titulo: "UV",
-    datos: [],
-    cnt: 0
+    datos: []
   },
   H: {
     titulo: "Ubication",
-    datos: [],
-    cnt: 0
+    datos: []
   }
 };
-
-//funcion para la obtencion del ultimo dato de arrays
-function getData(plottedVar) {
-  //seleccionar variable a graficar
-  // console.log(temp);
-  // console.log(plottedVar[plottedVar.length - 1]);
-  if (plottedVar[plottedVar.length - 1]) {
-    return plottedVar[plottedVar.length - 1];
-  } else {
-    return 0;
-  }
-}
 
 function updateChart(letter){
   if(loadedCharts){
@@ -99,7 +79,7 @@ function chartInit(){
   
     Plotly.plot(
       sensorData[sensor].titulo,
-      [{ y: [getData(sensorData[sensor].datos)], type: "line" }],
+      [{ y: [0], type: "line" }],
       layout,
       { responsive: true }
     );
