@@ -6,7 +6,11 @@ const ipcMain = electron.ipcMain;
 let mainWindow;
 
 app.on("ready", () => {
-  mainWindow = new BrowserWindow({ width: 960, height: 600, fullscreen: false });
+  mainWindow = new BrowserWindow({
+    width: 960,
+    height: 600,
+    fullscreen: false
+  });
   mainWindow.loadFile("./views/playground.html");
   mainWindow.on("closed", () => app.quit());
 
@@ -36,14 +40,25 @@ ipcMain.on("router", (event, route) => {
   }
 });
 
-setInterval(function(){
-  var randy0=String(Math.random()).slice(0,5);
-  var randy1=String(Math.random()).slice(0,5);
-  var randy2=String(Math.random()).slice(0,5);
-//  console.log(randy0);
-  mainWindow.webContents.send("Datos", "A"+randy0+",B"+randy1+",C"+randy2);
-},1000);
-
+//BAROMETRO-GIROSCOPIO-ACELEROMETRO-MAGNETROMETRO-MQ135,DHT11,SENSORUV
+//TEMP,PRESS,ALTITUDE,GIRSOCOPIOX,Y,Z,ACELERACIONX-G123,Y,Z,PITCH,ROLL,YAW,MAGNETOMETER,MQ135,TEMPERATURE,HUMIDITY,UVSENSOR
+// "A123,B234,C123,D123,E123,F123,G123,H123,I123,J123,K123,L123,M123,N123,O123,P123,Q123"
+setInterval(function() {
+  console.log("intervalo");
+  const alphabet = "ABCDEFGHIJKLMNOPQ".split("");
+  let cadena = "";
+  // alfabeto + numero aleatorio
+  for (let i = 0; i < alphabet.length; i++) {
+    if (i > 0) {
+      cadena += ",";
+    }
+    cadena += alphabet[i];
+    cadena += String(Math.random() * 100).slice(0, 3);
+  }
+  console.log(cadena);
+  mainWindow.webContents.send("Datos", cadena);
+  // mainWindow.webContents.send("Datos", "A"+r[0]+",B"+r[1]+",C"+r[2]);
+}, 1000);
 
 const menuTemplate = [
   {
@@ -91,12 +106,3 @@ if (process.env.NODE_ENV !== "production") {
     ]
   });
 }
-
-<<<<<<< HEAD
-=======
-//ios
-if (process.platform === "darwin") {
- // menuTemplate.unshift({});
-}
-
->>>>>>> 5aab9768c9e829acaa2fdeb35ce2e9123c73b8bb

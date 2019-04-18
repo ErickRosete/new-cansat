@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="font-size:100px">hello</h1>
+</body>
+<script>
+    //=====serial stuff
+    const SerialPort = require('serialport')
+    const port = new SerialPort('COM13', { baudRate: 9600,autoOpen: false })
+    console.log(port)
+
+    // port.open(function (err) {
+    //   if (err) {
+    //     return console.log('Error opening port: ', err.message)
+    //   }
+    
+    //   // Because there's no callback to write, write errors will be emitted on the port:
+    //   // port.write('main screen turn on')
+    //   console.log("se abrio el puerto")
+      
+    // })
+    
+    port.on('open', function() {
+      // open logic
+      console.log("open")
+    })
+    
+    // // Read data that is available but keep the stream in "paused mode"
+    // port.on('readable', function () {
+    //   console.log('Data:', port.read())
+    // })
+    </script>
+</html>
