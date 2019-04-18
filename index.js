@@ -12,10 +12,16 @@ app.on("ready", () => {
     fullscreen: false
   });
   mainWindow.loadFile("./views/playground.html");
-  mainWindow.on("closed", () => app.quit());
 
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(mainMenu);
+
+  if (process.env.NODE_ENV !== "production") {
+    startDevelopmentEnvironment();
+  } else {
+    startProductionEnvironment();
+  }
+
 });
 
 function showProgramWindow() {
@@ -40,21 +46,23 @@ ipcMain.on("router", (event, route) => {
   }
 });
 
-setInterval(function() {
-  console.log("intervalo");
-  const alphabet = "ABCDEFGHIJKLMNOPQ".split("");
-  let cadena = "";
-  // alfabeto + numero aleatorio
-  for (let i = 0; i < alphabet.length; i++) {
-    if (i > 0) {
-      cadena += ",";
+function sendTestData() {
+  return setInterval(function () {
+    // console.log("intervalo");
+    const alphabet = "ABCDEFGHIJKLMNOPQ".split("");
+    let cadena = "";
+    // alfabeto + numero aleatorio
+    for (let i = 0; i < alphabet.length; i++) {
+      if (i > 0) {
+        cadena += ",";
+      }
+      cadena += alphabet[i];
+      cadena += String(Math.random() * 100).slice(0, 3);
     }
-    cadena += alphabet[i];
-    cadena += String(Math.random() * 100).slice(0, 3);
-  }
-  // console.log(cadena);
-  mainWindow.webContents.send("Datos", cadena);
-}, 1000);
+    // console.log(cadena);
+    mainWindow.webContents.send("Datos", cadena);
+  }, 1000);
+}
 
 const menuTemplate = [
   {
@@ -100,5 +108,19 @@ if (process.env.NODE_ENV !== "production") {
         }
       }
     ]
+  });
+}
+
+const startDevelopmentEnvironment = () => {
+  const interval = sendTestData();
+  mainWindow.on("closed", () => {
+    app.quit();
+    clearInterval(interval)
+  });
+}
+
+const startProductionEnvironment = () => {
+  mainWindow.on("closed", () => {
+    app.quit();
   });
 }
