@@ -42,7 +42,7 @@ function updateChart(letter){
   if(loadedCharts){
    const len=sensorData[letter].datos.length
    const lastElement=sensorData[letter].datos[len-1]
-   Plotly.extendTraces(sensorData[letter].titulo, { y: [[lastElement]] }, [0]);
+   Plotly.extendTraces(sensorData[letter].titulo, { y: [[lastElement]] }, [0],{displayModeBar: false});
     if (len> 15) {
       Plotly.relayout(sensorData[letter].titulo, {
         xaxis: {
@@ -88,3 +88,65 @@ function chartInit(){
 }
 
 //=========================main code en visualizer.js=================//
+
+
+
+//Altura
+
+function getData(){
+  return Math.random();
+}
+
+Plotly.plot( 'AlturaTest', [{
+  y: [1, getData()], 
+  type: 'bar'
+  }]);
+  
+  var cnt = 0;
+
+  setInterval(function(){
+    var trace1 = {
+      x: [0.5,1],
+      y: [1, getData()],
+      width: [0.1, 1],
+//      color: ['rgba(204,204,204,1)', transparent],
+      name: 'Rest of world',
+      marker: {
+        color: 'rgb(154,205,50)',
+        opacity: [0,1],
+    },
+      type: 'bar'
+    };
+  
+    var data = [trace1];
+    
+    var layout = {
+      title: 'Altura Test',
+      autosize: true,
+      yaxis: {
+        title: 'metros',
+        height: 300,
+        tickmode: 'line',
+        automargin: true,
+        zeroline: false,
+        showgrid: false,
+        titlefont: { size:15 },
+      },
+      xaxis: {
+          automargin: true,
+          titlefont: { size:15 },
+          zeroline: false,
+          showline: false,
+          showgrid: false,
+          showticklabels: false
+        },
+    //    paper_bgcolor: 'transparent',
+    //    plot_bgcolor: 'transparent'
+    };
+    
+    Plotly.newPlot('AlturaTest', data, layout, {displayModeBar: false});
+
+
+
+
+},200);
