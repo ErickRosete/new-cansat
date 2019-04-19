@@ -1,33 +1,50 @@
 const SerialPort = require('serialport')
 const {StringStream} = require('scramjet');
 var ports=[]
+var elbueno;
 const exists = portName => SerialPort.list().then(ports => ports.some(port => port.comName === portName ));
 
 const escaneoPuertos=async ()=>{
     await SerialPort.list().then((puertos)=>{
         // console.log(puertos[0].comName)
+//        console.log(puertos)
         if(puertos.length>0)
-        ports.push(puertos[0].comName)
+        puertos.forEach((puerto)=>{
+            ports.push(puerto.comName)
+        })
     })
+}
+
+
+const intentarAbrirPuertos=async ()=>{
+    if(ports.length>0){
+        console.log(ports)
+        await ports.forEach(async (puerto)=>{
+            const port = await new SerialPort(puerto, { baudRate: 9600,autoOpen: false })
+            await port.open(function (err) {
+                if (err) {
+                    return console.log('Error opening port: ', err.message)
+                }
+                else
+                {
+                    console.log("Open "+puerto)
+                    elbueno=port;
+                }
+            })
+        })
+    }
 }
 
 const main=async()=>{
     if(!test){
         console.log("====Serial.js inicializado")
         await escaneoPuertos();
-        console.log("=====Puertos:")
-        console.log(ports)
         //ABRIENDO PUERTO SERIAL CONECTADO
-        if(ports.length>0){
-            console.log(ports[0])
-            const port = new SerialPort(ports[0], { baudRate: 9600,autoOpen: false })
-            port.open(function (err) {
-                if (err) {
-                    return console.log('Error opening port: ', err.message)
-                }
-            })
-            port.on('open', () => console.log('open'));
-            port.pipe(new StringStream) // pipe the stream to scramjet StringStream
+        await intentarAbrirPuertos();
+
+         
+            elbueno.on('open', () => console.log('open'));
+            elbueno.pipe(new StringStream) // pipe the stream to scramjet StringStream
                 .lines('\n')                  // split per line
                 .each( (datos)=>{// send message per every line
                         // data => io.sockets.emit('message',data)
@@ -45,11 +62,12 @@ const main=async()=>{
                         }
                     }
             );
+            
         }
         else{
             test=true;
         }
+        
     }
-}
 
 main();

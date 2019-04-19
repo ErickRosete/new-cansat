@@ -2,7 +2,7 @@ const electron = require("electron");
 const { ipcRenderer } = electron;
 
 let loadedCharts=false;
-var test=false;
+var test=true;
 
 //inicializaciones de diccionario je je para graficas
 const sensorData = {
