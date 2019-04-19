@@ -9,7 +9,10 @@ app.on("ready", () => {
   mainWindow = new BrowserWindow({
     width: 960,
     height: 600,
-    fullscreen: false
+    fullscreen: false,
+    webPreferences: {
+      nodeIntegration: true,
+    }
   });
   mainWindow.loadFile("./views/playground.html");
 
@@ -31,6 +34,11 @@ function showProgramWindow() {
 function showMonitorWindow() {
   mainWindow.loadFile("./views/visualizer.html");
 }
+
+function showMonitorWindow2() {
+  mainWindow.loadFile("./views/visualizer2.html");
+}
+
 
 ipcMain.on("router", (event, route) => {
   console.log(route);
@@ -78,6 +86,12 @@ const menuTemplate = [
         label: "Visualizar",
         click() {
           showMonitorWindow();
+        }
+      },
+      {
+        label: "Serial Info",
+        click() {
+          showMonitorWindow2();
         }
       },
       {

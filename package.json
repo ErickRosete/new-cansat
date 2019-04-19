@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "install": "electron-rebuild"
+    "install": "electron-rebuild",
+    "build-windows": "electron-packager . cansat --platform=win32 --arch=x64",
+    "build-mac": "electron-packager . cansat --platform=darwin --arch=x64"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,7 @@
     "sweetalert2": "^8.8.5"
   },
   "devDependencies": {
-    "electron-rebuild": "^1.8.4"
+    "electron-rebuild": "^1.8.4",
+    "electron-packager": "^13.1.1"
   }
 }
