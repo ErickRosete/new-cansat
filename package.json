@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-windows": "electron-packager . cansat --platform=win32 --arch=x64",
+    "build-mac": "electron-packager . cansat --platform=darwin --arch=x64"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +14,8 @@
     "electron": "^4.0.1",
     "serialport": "^7.1.4",
     "sweetalert2": "^8.8.5"
+  },
+  "devDependencies": {
+    "electron-packager": "^13.1.1"
   }
 }
