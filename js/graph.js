@@ -2,6 +2,8 @@ const electron = require("electron");
 const { ipcRenderer } = electron;
 
 let loadedCharts=false;
+var test=false;
+
 //inicializaciones de diccionario je je para graficas
 const sensorData = {
   A: {
@@ -56,14 +58,16 @@ function updateChart(letter){
 //recepcion de datos del back end. simbolo + para convertir a numeros
 ipcRenderer.on("Datos", (event, datos) => {
   //codigo patrocinado por erick
-  const dataArray = datos.split(",");
-  for (let data of dataArray) {
-    const letter = data.slice(0, 1);
-    const value = data.slice(1);
-    if(sensorData[letter] && Number(value)>0){
-      console.log(sensorData[letter])
-      sensorData[letter].datos.push(value)
-      updateChart(letter);
+  if(test){
+    const dataArray = datos.split(",");
+    for (let data of dataArray) {
+      const letter = data.slice(0, 1);
+      const value = data.slice(1);
+      if(sensorData[letter] && Number(value)>0){
+        console.log(sensorData[letter])
+        sensorData[letter].datos.push(value)
+        updateChart(letter);
+      }
     }
   }
 });
