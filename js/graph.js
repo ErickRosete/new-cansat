@@ -42,7 +42,7 @@ function updateChart(letter){
   if(loadedCharts){
    const len=sensorData[letter].datos.length
    const lastElement=sensorData[letter].datos[len-1]
-   Plotly.extendTraces(sensorData[letter].titulo, { y: [[lastElement]] }, [0],{displayModeBar: false});
+   Plotly.extendTraces(sensorData[letter].titulo, { y: [[lastElement]] }, [0]);
     if (len> 15) {
       Plotly.relayout(sensorData[letter].titulo, {
         xaxis: {
