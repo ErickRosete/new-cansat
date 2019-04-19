@@ -8,35 +8,59 @@ var test=false;
 const sensorData = {
   A: {
     titulo: "Temperatura",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'C',
+    }
   },
   B: {
     titulo: "Presión",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'psi',
+    }
   },
   C: {
     titulo: "Humedad",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'something',
+    }
   },
   D: {
     titulo: "Altura",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'metros',
+    }
   },
   E: {
     titulo: "CO2",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'partículas',
+    }
   },
   F: {
     titulo: "Tiempo",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'hola',
+    }
   },
   G: {
     titulo: "UV",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'UV',
+    }
   },
   H: {
     titulo: "Ubicación",
-    datos: []
+    datos: [],
+    yaxis: {
+      title: 'hola',
+    }
   }
 };
 
@@ -49,11 +73,16 @@ function updateChart(letter){
       Plotly.relayout(sensorData[letter].titulo, {
         xaxis: {
           range: [len - 15, len]
-        }
+        },
       });
     }
   }
 }
+
+console.log("sensorData.datos");
+console.log(sensorData['A'].datos);
+console.log("aversiescierto");
+console.log(sensorData['A'].datos[sensorData['D'].datos.length-1]);
 
 //recepcion de datos del back end. simbolo + para convertir a numeros
 ipcRenderer.on("Datos", (event, datos) => {
@@ -77,7 +106,10 @@ function chartInit(){
   for(let sensor in sensorData){
     var layout = {
       title: sensorData[sensor].titulo,
-      font: { size: 18 }
+      font: { size: 18 },
+      yaxis: {
+        title: 'metros',
+      },
     };
   
     Plotly.plot(
@@ -108,9 +140,10 @@ Plotly.plot( 'AlturaTest', [{
   var cnt = 0;
 
   setInterval(function(){
+    var alturamax=100;
     var trace1 = {
       x: [0.5,1],
-      y: [1, getData()],
+      y: [alturamax, sensorData['A'].datos[sensorData['D'].datos.length-1]],
       width: [0.1, 1],
 //      color: ['rgba(204,204,204,1)', transparent],
       name: 'Rest of world',
@@ -124,20 +157,19 @@ Plotly.plot( 'AlturaTest', [{
     var data = [trace1];
     
     var layout = {
-      title: 'Altura Test',
+      title: 'Altura',
       autosize: true,
       yaxis: {
         title: 'metros',
-        height: 300,
         tickmode: 'line',
         automargin: true,
         zeroline: false,
         showgrid: false,
-        titlefont: { size:15 },
+        titlefont: { size:18 },
       },
       xaxis: {
           automargin: true,
-          titlefont: { size:15 },
+          titlefont: { size:18 },
           zeroline: false,
           showline: false,
           showgrid: false,
@@ -147,9 +179,5 @@ Plotly.plot( 'AlturaTest', [{
     //    plot_bgcolor: 'transparent'
     };
     
-    Plotly.newPlot('AlturaTest', data, layout, {displayModeBar: false});
-
-
-
-
+    Plotly.newPlot('Altura', data, layout, {displayModeBar: false});
 },200);
