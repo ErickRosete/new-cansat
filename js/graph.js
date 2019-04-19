@@ -2,7 +2,7 @@ const electron = require("electron");
 const { ipcRenderer } = electron;
 
 let loadedCharts=false;
-var test=true;
+var test=false;
 
 //inicializaciones de diccionario je je para graficas
 const sensorData = {
@@ -75,7 +75,6 @@ ipcRenderer.on("Datos", (event, datos) => {
 //aqui se genera el objeto de plotly y se le pone el 0 en el 0
 function chartInit(){
   for(let sensor in sensorData){
-    console.log(sensor)
     var layout = {
       title: sensorData[sensor].titulo,
       font: { size: 18 }
