@@ -18,47 +18,47 @@
         <div id="visualizacion">
             <div class="vis-flashcards">
                 <div class="flashcard" style="background-color:#f9b807" id="card-temperatura">
-                    <p>15<span>psi</span></p>
+                    <p><span id='tempactual'>15</span> C</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Temperatura.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#e94d5c" id="card-presion">
-                    <p>15<span>psi</span></p>
+                    <p><span id='presactual'>15</span> psi</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Presion.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#04caf2" id="card-humedad">
-                    <p>15<span>psi</span></p>
+                    <p><span id='humedactual'>15</span> %</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Humedad.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#95c11f" id="card-altitud">
-                    <p>15<span>psi</span></p>
+                    <p><span id='alturactual'>15</span> m</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Altura.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#114e87" id="card-tiempo">
-                    <p>15<span>psi</span></p>
+                    <p>15<span>s</span></p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Tiempo.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#3c3c3c" id="card-co2">
-                    <p>15<span>psi</span></p>
+                    <p><span id='co2actual'>15</span> ppm</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Co2.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#913b8e" id="card-rayosuv">
-                    <p>15<span>psi</span></p>
+                    <p><span id='uvactual'>15</span> nm</p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/RayosUV.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#ff8307" id="card-ubicacion">
-                    <p>15<span>psi</span></p>
+                    <p>15<span></span></p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Ubicacion.svg"></img>
                 </div>
 
                 <div class="flashcard" style="background-color:#ff077a" id="card-camara">
-                    <p>15<span>psi</span></p>
+                    <p>15<span></span></p>
                     <img class="flashcard-img" src="../assets/visualizer/icons/Camara.svg"></img>
                 </div>
 
@@ -73,7 +73,7 @@
                                 src="../assets/visualizer/icons/Temperatura.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='tempactual2' > 15 C </h5>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
             </div>
 
             <div class="container-fluid sensor_vis" id="vis-presion">
-                <h3> Presion </h3>
+                <h3> Presión </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
@@ -95,7 +95,7 @@
                                 src="../assets/visualizer/icons/Presion.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='presactual2'>15 psi </h5>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                                 src="../assets/visualizer/icons/Humedad.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='humedactual2'>15 % </h5>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                 src="../assets/visualizer/icons/Altura.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='alturactual2'>15 m </h5>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                                 src="../assets/visualizer/icons/Tiempo.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title">15* s </h5>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
             </div>
 
             <div class="container-fluid sensor_vis" id="vis-co2">
-                <h3> Co2 </h3>
+                <h3> CO2 </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
@@ -183,7 +183,7 @@
                                 src="../assets/visualizer/icons/Co2.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='co2actual2'>15 ppm </h5>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                                 src="../assets/visualizer/icons/RayosUV.svg" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Actual</p>
-                                <h5 class="card-title">15* C </h5>
+                                <h5 class="card-title" id='uvactual2'>15 nm </h5>
                             </div>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
             </div>
 
             <div class="container-fluid sensor_vis" id="vis-ubicacion">
-                <h3> Ubicacion </h3>
+                <h3> Ubicación </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
@@ -241,7 +241,7 @@
             </div>
 
             <div class="container-fluid sensor_vis" id="vis-camara">
-                <h3> Camara </h3>
+                <h3> Cámara </h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card">

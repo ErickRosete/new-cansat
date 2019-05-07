@@ -2,7 +2,7 @@ const electron = require("electron");
 const { ipcRenderer } = electron;
 
 let loadedCharts=false;
-var test=false;
+var test=true;
 
 //inicializaciones de diccionario je je para graficas
 const sensorData = {
@@ -24,7 +24,7 @@ const sensorData = {
     titulo: "Humedad",
     datos: [],
     yaxis: {
-      title: 'something',
+      title: '%',
     }
   },
   D: {
@@ -38,21 +38,21 @@ const sensorData = {
     titulo: "CO2",
     datos: [],
     yaxis: {
-      title: 'partículas',
+      title: 'ppm',
     }
   },
   F: {
     titulo: "Tiempo",
     datos: [],
     yaxis: {
-      title: 'hola',
+      title: 's',
     }
   },
   G: {
     titulo: "UV",
     datos: [],
     yaxis: {
-      title: 'UV',
+      title: 'nm',
     }
   },
   H: {
@@ -79,10 +79,43 @@ function updateChart(letter){
   }
 }
 
-console.log("sensorData.datos");
-console.log(sensorData['A'].datos);
-console.log("aversiescierto");
-console.log(sensorData['A'].datos[sensorData['D'].datos.length-1]);
+function updateLastValue(letter){
+  console.log("Hola");
+  console.log(letter);
+  const len=sensorData[letter].datos.length
+  const lastElement=sensorData[letter].datos[len-1]
+  console.log(lastElement);
+  
+
+  if(letter=='A'){
+  document.getElementById('tempactual').innerHTML=lastElement;  
+  document.getElementById('tempactual2').innerHTML=lastElement+'C';  
+  }
+
+  if(letter=='B'){
+    document.getElementById('presactual').innerHTML=lastElement;  
+    document.getElementById('presactual2').innerHTML=lastElement+'psi';  
+  }
+  if(letter=='C'){
+  document.getElementById('humedactual').innerHTML=lastElement;  
+  document.getElementById('humedactual2').innerHTML=lastElement+'C';  
+  }
+
+  if(letter=='D'){
+    document.getElementById('alturactual').innerHTML=lastElement;  
+    document.getElementById('alturactual2').innerHTML=lastElement+'psi';  
+  }
+  if(letter=='E'){
+    document.getElementById('co2actual').innerHTML=lastElement;  
+    document.getElementById('co2actual2').innerHTML=lastElement+'C';  
+  }
+
+  if(letter=='G'){
+    document.getElementById('uvactual').innerHTML=lastElement;  
+    document.getElementById('uvactual2').innerHTML=lastElement+'C';  
+    }
+}
+
 
 //recepcion de datos del back end. simbolo + para convertir a numeros
 ipcRenderer.on("Datos", (event, datos) => {
@@ -93,9 +126,10 @@ ipcRenderer.on("Datos", (event, datos) => {
       const letter = data.slice(0, 1);
       const value = data.slice(1);
       if(sensorData[letter] && Number(value)>0){
-        console.log(sensorData[letter])
+      //  console.log(sensorData[letter])
         sensorData[letter].datos.push(value)
         updateChart(letter);
+        updateLastValue(letter);
       }
     }
   }
@@ -143,7 +177,7 @@ Plotly.plot( 'AlturaTest', [{
     var alturamax=100;
     var trace1 = {
       x: [0.5,1],
-      y: [alturamax, sensorData['A'].datos[sensorData['D'].datos.length-1]],
+      y: [alturamax, sensorData['D'].datos[sensorData['D'].datos.length-1]],
       width: [0.1, 1],
 //      color: ['rgba(204,204,204,1)', transparent],
       name: 'Rest of world',
